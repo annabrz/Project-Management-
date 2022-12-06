@@ -9,9 +9,14 @@ class TasksController < ApplicationController
 
    def show
     task= Task.find(params[:id])
-    render json: task
+    render json: task, status: :ok
    end
 
+   def update
+    task = Task.find(params[:id])
+    task.update(task_params)
+    render json: task, status: :accepted
+   end
 
     def create
      task= Task.create!(task_params)
@@ -28,9 +33,11 @@ class TasksController < ApplicationController
     def task_params
         params.permit(:content, :project_id)
     end 
+    
     def render_not_found_response
         render json: { error: "Task not found" }, status: :not_found
     end
+
     def render_unprocessable_entity_response(invalid)
         render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
     end

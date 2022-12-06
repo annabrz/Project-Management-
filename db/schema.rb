@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2022_12_06_182436) do
 
   # These are extensions that must be enabled in order to support this database
@@ -42,7 +41,8 @@ ActiveRecord::Schema.define(version: 2022_12_06_182436) do
     t.string "project_title"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.string "detail"
+    t.string "goal"
+    t.string "steps"
     t.bigint "manager_id"
     t.bigint "employee_id"
     t.datetime "created_at", precision: 6, null: false
