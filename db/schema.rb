@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_06_163432) do
+
+ActiveRecord::Schema.define(version: 2022_12_06_182436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +20,9 @@ ActiveRecord::Schema.define(version: 2022_12_06_163432) do
     t.string "first_name"
     t.string "last_name"
     t.string "position"
+    t.string "department"
     t.string "email"
-    t.string "password_digest"
-    t.string "avatar"
+    t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -30,9 +31,9 @@ ActiveRecord::Schema.define(version: 2022_12_06_163432) do
     t.string "first_name"
     t.string "last_name"
     t.string "position"
+    t.string "department"
     t.string "email"
-    t.string "password_digest"
-    t.string "avatar"
+    t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -41,8 +42,7 @@ ActiveRecord::Schema.define(version: 2022_12_06_163432) do
     t.string "project_title"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.string "goal"
-    t.string "steps"
+    t.string "detail"
     t.bigint "manager_id"
     t.bigint "employee_id"
     t.datetime "created_at", precision: 6, null: false
@@ -52,8 +52,11 @@ ActiveRecord::Schema.define(version: 2022_12_06_163432) do
   end
 
   create_table "tasks", force: :cascade do |t|
+    t.string "content"
+    t.bigint "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 
 end

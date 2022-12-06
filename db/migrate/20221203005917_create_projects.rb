@@ -4,7 +4,8 @@ class CreateProjects < ActiveRecord::Migration[6.1]
       t.string :project_title
       t.datetime :start_date
       t.datetime :end_date
-      t.string :goal
+
+      t.string :detail
       t.belongs_to :manager
       t.belongs_to :employee
 
