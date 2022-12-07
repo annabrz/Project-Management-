@@ -4,8 +4,7 @@ puts "Seeding..."
 30.times {User.create(
                          first_name: Faker::Name.first_name,
                          last_name: Faker::Name.last_name,
-                         position: Faker::Job.title,
-                         manager?: [true, false].sample,
+                         user_role: ['Employee', 'Manager'].sample,
                          email: Faker::Internet.email,
                          password: Faker::Internet.password,
                          avatar: Faker::Avatar.image,

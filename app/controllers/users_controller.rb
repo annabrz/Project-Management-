@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
     def create
         user = User.create!(user_params)
-        render json: project, status: :accepted
+        render json: user, status: :accepted
     end
 
     def update
@@ -30,6 +30,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        parmas.permit(:first_name, :last_name, :position, :manager?, :email, :password, :avatar)
+        params.permit(:first_name, :last_name, :position, :manager?, :email, :password, :avatar)
     end
 end
