@@ -25,7 +25,6 @@ puts "Seeding..."
                         project_title: Faker::Marketing.buzzwords,
                         start_date: Faker::Date.between(from: '2022-01-01', to: '2022-07-01'),
                         end_date: Faker::Date.between(from: '2022-01-01', to: '2022-07-01'),
-                        goal: Faker::Quote.famous_last_words,
                         manager_id: rand(1..10),
                         employee_id: rand(1..20)
 
