@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, with: :entity_not_found_response
+    rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_response
     
     def index 
         users = User.all
@@ -30,6 +32,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:first_name, :last_name, :position, :manager?, :email, :password, :avatar)
+        params.permit(:first_name, :last_name, :user_role, :email, :password, :avatar)
     end
 end
