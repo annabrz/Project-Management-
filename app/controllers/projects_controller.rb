@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
     end
 
     def create
-        project = Project.create!(task_params)
+        project = Project.create!(project_params)
         render json: project, status: :accepted
     end
 
@@ -30,6 +30,6 @@ class ProjectsController < ApplicationController
     private
 
     def project_params
-        parmas.permit(:project_title, :start_date, :end_date, :detail)
+        params.permit(:project_title, :start_date, :end_date, :detail)
     end
 end
