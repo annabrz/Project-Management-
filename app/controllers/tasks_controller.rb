@@ -30,7 +30,6 @@ class TasksController < ApplicationController
     private
 
     def task_params
-<<<<<<< HEAD
         # params.permit(:content)
         params.permit(:content, :project_id)
     end 
@@ -39,8 +38,6 @@ class TasksController < ApplicationController
     end
     def render_unprocessable_entity_response(invalid)
         render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
-=======
         params.permit(:content, :user_id, :project_id)
->>>>>>> 13b047ad2e6b607ad301fb7168401c490c5e7239
     end
 end
