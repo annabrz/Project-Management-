@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 2022_12_06_182436) do
     t.string "first_name"
     t.string "last_name"
     t.string "position"
-    t.string "department"
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
+    t.string "avatar"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -30,16 +30,15 @@ ActiveRecord::Schema.define(version: 2022_12_06_182436) do
     t.string "first_name"
     t.string "last_name"
     t.string "position"
-    t.string "department"
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
+    t.string "avatar"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "projects", force: :cascade do |t|
     t.string "project_title"
-    t.datetime "start_date"
     t.datetime "end_date"
     t.string "detail"
     t.bigint "manager_id"

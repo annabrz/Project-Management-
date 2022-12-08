@@ -25,6 +25,7 @@ class TasksController < ApplicationController
 
     private 
     def task_params
+        # params.permit(:content)
         params.permit(:content, :project_id)
     end 
     def render_not_found_response

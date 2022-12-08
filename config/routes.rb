@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   resources :tasks , only: [:show, :create, :index, :destroy]
-  resources :projects
+  resources :projects, only: [:show, :create, :index, :update, :destroy]
   resources :managers
   resources :employees
   # Routing logic: fallback requests for React Router.
