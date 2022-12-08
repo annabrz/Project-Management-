@@ -22,7 +22,7 @@ function AddProject ({onAddTask, onAddProject}){
             body: JSON.stringify({
                 //  id: nanoid() ,
                 content: content, 
-                project_id: project.id
+                // project_id: project.id
             }), 
         })
         .then ((r)=>r.json())
