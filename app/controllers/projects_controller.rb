@@ -1,7 +1,5 @@
 class ProjectsController < ApplicationController
-rescue_from ActiveRecord::RecordNotFound, with: :entity_not_found_response
-rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_response
-
+    
     def index 
         projects = Project.all
         render json: projects, status: :ok
@@ -32,14 +30,6 @@ rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_response
     private
 
     def project_params
-        params.permit(:project_title, :start_date, :end_date, :goal, :manager_id, :employee_id)
-    end
-
-    def entity_not_found_response
-        render json: { "error": "Project not found." }, status: :not_found
-    end
-
-    def unprocessable_entity_response exception
-        render json: { "errors": exception.record.errors.full_messages },status: :unprocessable_entity
+        params.permit(:project_title, :start_date, :end_date, :detail)
     end
 end
