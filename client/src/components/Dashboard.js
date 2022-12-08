@@ -12,7 +12,7 @@ function Dashboard (){
     .then(r=>r.json())
     .then(projects=>setProjects(projects))
   },[])
- 
+
   function handleDelete(id) {
     fetch(`/projects/${id}`, {
       method: "DELETE",
@@ -25,10 +25,10 @@ function Dashboard (){
     });
   }
 
-  
-  
+
+
   function handleClick (){
-    
+
   }
     return (
     <Grid
@@ -43,16 +43,19 @@ function Dashboard (){
     marginBottom={'2px'}
     >
 
-    <GridItem pl='100' bg='white' display={'flex'} justifyContent='space-between' borderWidth='3px' borderColor={'blue.100'} borderRadius='lg' area={'header'}>
+    {/* <GridItem pl='100' bg='white' display={'flex'} justifyContent='space-between' borderWidth='3px' borderColor={'blue.100'} borderRadius='lg' area={'header'}>
       <Tabs  marginLeft='-50px'>
         <TabList>
           <Tab>Board</Tab>
           <Link to= '/project/new'>
           <Tab>New Project + </Tab>
           </Link>
+          <Link to= '/employees'>
+          <Tab> Employees </Tab>
+          </Link>
         </TabList>
       </Tabs>
-  
+
     <Text textColor={"GrayText"} alignSelf='center' marginLeft='-150px' fontSize={"3xl"} ><b> Project-Manager </b></Text>
     <Menu >
       <MenuButton as ={Button} marginTop='3px' marginRight={'5px'} padding='5' leftIcon={<ChevronDownIcon />}>
@@ -64,9 +67,9 @@ function Dashboard (){
           <MenuItem onClick={handleClick}>LogOut</MenuItem>
         </MenuList>
     </Menu>
-    </GridItem>
+    </GridItem> */}
 
-   
+
     <Grid templateColumns='repeat(4, 1fr)'  gap={5}>
       <GridItem overflow="scroll" display="grid" borderRadius='lg' w='100%' h='740' bg='blue.100'  >
         {projects.map(project=>{
@@ -82,23 +85,23 @@ function Dashboard (){
             <CardFooter>
               <Button colorScheme={"blue"} h={'30px'} margin="4px">Assign</Button><br />
               <Button colorScheme={"yellow"} h={'30px'} margin="4px">Update</Button>
-              <Button colorScheme={"orange"} h={'30px'} margin="4px"   
+              <Button colorScheme={"orange"} h={'30px'} margin="4px"
               onClick={() => handleDelete(project.id)}>Delete</Button>
             </CardFooter>
             </Card>
         </SimpleGrid>)
 
         })}
-       
+
       </GridItem>
-    
+
       <GridItem borderRadius='lg' w='350px' h='740' bg='blue.100' />
       <GridItem borderRadius='lg' w='350px' h='740' bg='blue.100' />
       <GridItem borderRadius='lg' w='107%' h='740' bg='blue.100' />
-  
+
     </Grid>
     </Grid>
- 
+
     )
 }
 
