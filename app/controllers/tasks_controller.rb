@@ -30,6 +30,14 @@ class TasksController < ApplicationController
     private
 
     def task_params
+        # params.permit(:content)
+        params.permit(:content, :project_id)
+    end 
+    def render_not_found_response
+        render json: { error: "Task not found" }, status: :not_found
+    end
+    def render_unprocessable_entity_response(invalid)
+        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
         params.permit(:content, :user_id, :project_id)
     end
 end

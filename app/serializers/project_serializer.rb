@@ -1,4 +1,3 @@
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :project_title, :start_date, :end_date, :detail
-  
+  attributes :id, :project_title,  :end_date, :detail
 end

@@ -14,9 +14,13 @@ puts "Seeding..."
 #project seeds
 10.times {Project.create(
                         project_title: Faker::Marketing.buzzwords,
-                        start_date: Faker::Date.between(from: '2022-01-01', to: '2022-07-01'),
                         end_date: Faker::Date.between(from: '2022-01-01', to: '2022-07-01'),
                         detail: Faker::Marketing.buzzwords
+)}
+2.times{Task.create(
+                    content: Faker::Marketing.buzzwords,
+                    project_id: rand(1..10)
+
 )}
 
 #task seeds
