@@ -10,11 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_06_182436) do
+ActiveRecord::Schema.define(version: 2022_12_07_202822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "employees", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -37,24 +38,35 @@ ActiveRecord::Schema.define(version: 2022_12_06_182436) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+=======
+>>>>>>> 13b047ad2e6b607ad301fb7168401c490c5e7239
   create_table "projects", force: :cascade do |t|
     t.string "project_title"
     t.datetime "end_date"
     t.string "detail"
-    t.bigint "manager_id"
-    t.bigint "employee_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["employee_id"], name: "index_projects_on_employee_id"
-    t.index ["manager_id"], name: "index_projects_on_manager_id"
   end
 
   create_table "tasks", force: :cascade do |t|
     t.string "content"
     t.bigint "project_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_tasks_on_project_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "user_role"
+    t.string "email"
+    t.string "password_digest"
+    t.string "avatar"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
