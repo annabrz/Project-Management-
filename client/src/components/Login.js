@@ -15,21 +15,21 @@ const Login =({ status, setStatus} )=>{
         const handleClick=()=> setShow(!show)
             
         const handleSubmit=(e)=>{
-        //    e.preventDefault()
+           e.preventDefault()
         
-        //    const currentUser ={  
-        //     email: email,
-        //     password: password ,
-        // }    
-        // fetch("http://localhost:9292/auth",{
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json"   
-        //     }, 
-        //     body : JSON.stringify(currentUser)
-        // })
-        // .then(r => setStatus(r.status))
-        // .then(r=>console.log(r))
+           const currentUser ={  
+            email: email,
+            password: password ,
+        }    
+        fetch("http://localhost:3000/login",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"   
+            }, 
+            body : JSON.stringify(currentUser)
+        })
+        .then(r => setStatus(r.status))
+        .then(r=>console.log(r))
          
     }   
 
@@ -38,7 +38,7 @@ const Login =({ status, setStatus} )=>{
                
                <FormControl id="email" isRequired>
                 <FormLabel>Email</FormLabel>
-                {/* {status === 200 ? <Redirect to= '/Chats' /> : <Redirect to= '/' />} */}
+                {status === 200 ? <Redirect to= '/Chats' /> : <Redirect to= '/' />}
                 <Input h="30px" placeholder="Enter your email-id " 
                 onChange={e=>setEmail(e.target.value)}></Input>
                </FormControl>
