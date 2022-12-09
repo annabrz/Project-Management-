@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   #custom route 
   #auth routes here v
   post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#delete'
 end

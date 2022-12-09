@@ -1,11 +1,11 @@
 import React from "react"; 
-// import { useState } from "react";
+import { useState } from "react";
 import { Container, Box, Text , Tab, Tabs,TabList, TabPanels, TabPanel  } from "@chakra-ui/react";
 import Login from "./Login";
 import SignUp from "./Signup";
 
 const InitialPage= ()=> {
-//   const [status, setStatus] = useState('');
+const [status, setStatus] = useState('');
     return <Container maxW= "xl" centerContent >
         <Box 
           d="flex"
@@ -29,8 +29,7 @@ const InitialPage= ()=> {
          </TabList>
          <TabPanels>
            <TabPanel>
-             {/* <Login status={status} setStatus={setStatus}/> */}
-             <Login />
+             <Login status={status} setStatus={setStatus}/> 
            </TabPanel>
            <TabPanel>
             {/* <SignUp addUser={addUser}  /> */}
