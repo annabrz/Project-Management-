@@ -8,8 +8,9 @@ puts "Seeding..."
                          email: Faker::Internet.email,
                          password: Faker::Internet.password,
                          avatar: Faker::Avatar.image,
-                         
+
 )}
+
 
 #project seeds
 10.times {Project.create(

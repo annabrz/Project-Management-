@@ -9,6 +9,9 @@ import NavBar from "./components/NavBar";
 function App() {
   const [tasks, setTasks] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [users, setUsers] = useState([])
+
+  // let employees = users.filter(user => user.user_role == "employee")
 
   useEffect(() => {
     fetch("/tasks")
@@ -20,6 +23,12 @@ function App() {
     fetch("/projects")
       .then((r) => r.json())
       .then((projects) => setProjects(projects));
+  }, []);
+
+  useEffect(() => {
+    fetch("/users")
+      .then((r) => r.json())
+      .then((users) => setUsers(users));
   }, []);
 
   function handleAddProject(newProject) {
@@ -38,7 +47,9 @@ function App() {
           <InitialPage></InitialPage>
         </Route>
         <Route path="/employees">
-          <EmployeePage></EmployeePage>
+          <EmployeePage users={users} setUsers={setUsers}>
+
+          </EmployeePage>
         </Route>
 
         <Route exact path="/">
