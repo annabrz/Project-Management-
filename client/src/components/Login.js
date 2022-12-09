@@ -6,11 +6,13 @@ import { Redirect, useHistory,Link } from "react-router-dom";
 
 
 const Login =({ status, setStatus} )=>{
-    
+        const history = useHistory()
         const[email, setEmail]=useState('')
         const [password, setPassword]=useState('') 
         const [show, setShow] =useState(false)
-        const [currentUser, setCurrentUser] = useState
+        const [currentUser, setCurrentUser] = useState('')
+        const [user, setUser] = useState('')
+        
         
       
     
@@ -30,8 +32,14 @@ const Login =({ status, setStatus} )=>{
             }, 
             body : JSON.stringify(currentUser)
         })
-        .then(r => setStatus(r.status))
-        .then(r=>console.log(r))
+        .then(res => {
+            if(res.ok){
+                res.json().then(user => {
+                    setUser(user)
+                    history.push('/')
+                })
+            }
+        })
          
     }   
 
@@ -40,7 +48,6 @@ const Login =({ status, setStatus} )=>{
                
                <FormControl id="email" isRequired>
                 <FormLabel>Email</FormLabel>
-                {/* {status === 202 ? <Redirect to= '/' /> : <Redirect to={null} />} */}
                 <Input h="30px" placeholder="Enter your email-id " 
                 value={email}
                 onChange={e=>setEmail(e.target.value)}></Input>
