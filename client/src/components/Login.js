@@ -10,12 +10,7 @@ const Login =({ status, setStatus} )=>{
         const[email, setEmail]=useState('')
         const [password, setPassword]=useState('') 
         const [show, setShow] =useState(false)
-        const [currentUser, setCurrentUser] = useState('')
-        const [user, setUser] = useState('')
         
-        
-      
-    
         const handleClick=()=> setShow(!show)
             
         const handleSubmit=(e)=>{
@@ -25,6 +20,7 @@ const Login =({ status, setStatus} )=>{
             email: email,
             password: password ,
         }    
+        //create session for login
         fetch("http://localhost:3000/login",{
             method: "POST",
             headers: {
@@ -35,7 +31,7 @@ const Login =({ status, setStatus} )=>{
         .then(res => {
             if(res.ok){
                 res.json().then(user => {
-                    setUser(user)
+                    
                     history.push('/')
                 })
             }

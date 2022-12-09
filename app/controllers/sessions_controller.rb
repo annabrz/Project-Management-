@@ -10,10 +10,6 @@ class SessionsController < ApplicationController
         end
     end
 
-    def show
-        
-    end
-
     def delete
         session.delete :user_id
         head :no_content

@@ -51,7 +51,7 @@ module ReactRailsApiProjectTemplate
         resource '*',
                  headers: :any,
                  expose: %w(access-token expiry token-type uid client),
-                 methods: %i(post)
+                 methods: %i(post, delete)
       end
     end
 

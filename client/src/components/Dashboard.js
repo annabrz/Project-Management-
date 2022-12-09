@@ -3,10 +3,13 @@ import { Grid, GridItem, Text, Tabs, TabList, TabPanels, Tab, TabPanel,Avatar, M
 import {   Menu, MenuButton,Button, Card, CardHeader, CardBody, CardFooter, Heading}  from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { SimpleGrid } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 
 function Dashboard (){
   const [projects, setProjects] = useState([])
+  const history = useHistory();
+
   useEffect(()=>{
     fetch("/projects")
     .then(r=>r.json())
@@ -26,9 +29,16 @@ function Dashboard (){
   }
 
   
-  
-  function handleClick (){
-    
+  //delete session for logout
+  function handleClick (e){
+    fetch("http://localhost:3000/logout", {
+      method: 'DELETE'
+    })
+    .then(res => {
+      if(res.ok){
+        history.push('/login')
+      }
+    })
   }
     return (
     <Grid
@@ -62,6 +72,7 @@ function Dashboard (){
           <MenuItem>My Profile</MenuItem>
           <MenuDivider />
           <MenuItem onClick={handleClick}>LogOut</MenuItem>
+          
         </MenuList>
     </Menu>
     </GridItem>
